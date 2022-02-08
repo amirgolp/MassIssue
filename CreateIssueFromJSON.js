@@ -5,7 +5,7 @@ const TOKEN = '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';
 const user = 'amirgolp';
 const repo = 'Wordle';
 
-const csv = fs.readFileSync("issues - Copy.csv")
+const csv = fs.readFileSync("template.csv")
 
 var array = csv.toString().split("\r");
 
