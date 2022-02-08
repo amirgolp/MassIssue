@@ -1,23 +1,32 @@
-// const fetch = require('node-fetch');
-// require('dotenv').config();
-// import './Issues.json';
 import fetch from 'node-fetch';
-// const axios = require ('axios'); 
-const TOKEN = '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';
-const file = [
-    {
-      "title": "Kommunal direkt ",
-      "body": `vub:mag:00439942 
-      https://www.kommunaldirekt.de/kd-magazin-2/ausgaben-archiv/`
-    },
-    {
-      "title": "Die Kommunale  ",
-      "body": "vub:mag:00439943 https://sgk.nrw/publikationen/die-kommunale"
-    }
-   ]
+import fs from "fs";
 
+const TOKEN = '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';
 const user = 'amirgolp';
 const repo = 'Wordle';
+
+const csv = fs.readFileSync("issues - Copy.csv")
+
+var array = csv.toString().split("\r");
+
+let result = [];
+
+let headers = array[0].split(",")
+headers[0] = headers[0].substring(1);
+
+for (let i = 1; i < array.length - 1; i++) {
+    let obj = {}
+
+    let str = array[i]
+    const [hdr, ...body] = str.split(',');
+    obj[headers[0]] = hdr.substring(1);
+    obj[headers[1]] = `${body[0]} 
+    
+${body[1]}`;
+
+
+    result.push(obj)
+}
 
 let createIssueFromJSON = function(file) {
     file.forEach(issue => {
@@ -38,4 +47,4 @@ let createIssueFromJSON = function(file) {
     })
 }
 
-createIssueFromJSON(file);
+createIssueFromJSON(result);
