@@ -1,3 +1,4 @@
+
 import { CRAWLER_CONFIG, PAGE_ISSUE } from '../../../../../engine/interfaces'
 import FeedItem from '../../../../../engine/util/FeedItem'
 
@@ -76,3 +77,4 @@ const config: CRAWLER_CONFIG = {
 };
 
 export default config;
+
