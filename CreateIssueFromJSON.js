@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import fs from "fs";
 
-const TOKEN = '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';
+const TOKEN = '';
 const user = 'amirgolp';
 const repo = 'Wordle';
 
